@@ -37,7 +37,7 @@ func fetchDiskSpace() ([]EbsDevice, error) {
 			percent := fmt.Sprintf("%2.f%%", s.UsedPercent)
 			dvc := EbsDevice{
 				MountPath:  device,
-				Size:       human.Bytes(s.Total),
+				Size:       human.Bytes(s.Used + s.Free),
 				Used:       human.Bytes(s.Used),
 				Available:  human.Bytes(s.Free),
 				UsePercent: percent,

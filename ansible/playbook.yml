@@ -1,9 +1,9 @@
 - hosts: all
   become: true
   tasks:
-    - name: Download the go binary
+    - name: Download the ebs-playground binary
       ansible.builtin.shell: |
-        wget https://github.com/utibeabasi6/ebs-playground/releases/download/v1.0.0/ebs-playground_Linux_x86_64.tar.gz
+        wget https://github.com/utibeabasi6/ebs-playground/releases/download/v2.0.0/ebs-playground_Linux_x86_64.tar.gz
         tar -xvzf ebs-playground_Linux_x86_64.tar.gz ebs-playground
         chmod +x ebs-playground
       args:
