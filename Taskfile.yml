@@ -1,0 +1,32 @@
+version: '3'
+
+tasks:
+  install:
+    dir: scripts/dependencies
+    cmds:
+      - chmod +x terraform.sh && ./terraform.sh
+    silent: true
+  plan:
+    dir: terraform
+    cmds:
+      - terraform plan -var-file=".tfvars"
+    silent: true
+  apply:
+    dir: terraform
+    cmds:
+      - terraform apply -var-file=".tfvars"
+    silent: true
+  destroy:
+    dir: terraform
+    cmds:
+      - terraform destroy -var-file=".tfvars"
+    silent: true
+  init:
+    dir: terraform
+    cmds:
+      - terraform init
+    silent: true
+  run:
+    cmds:
+      - go run .
+    silent: true
