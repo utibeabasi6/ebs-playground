@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Create the volume group
-vgcreate ebs-pg-vg /dev/xvdf /dev/xvdg /dev/xvdh
+sudo vgcreate ebs-pg-vg /dev/xvdf /dev/xvdg /dev/xvdh
 
 # Create logical volumes
 sudo lvcreate -l 50%FREE -n lv1  ebs-pg-vg
