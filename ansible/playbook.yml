@@ -1,4 +1,25 @@
 - hosts: all
+  become: true
   tasks:
     - name: Download the go binary
-      
+      ansible.builtin.shell: |
+        wget https://github.com/utibeabasi6/ebs-playground/releases/download/v1.0.0/ebs-playground_Linux_x86_64.tar.gz
+        tar -xvzf ebs-playground_Linux_x86_64.tar.gz ebs-playground
+        chmod +x ebs-playground
+      args:
+        chdir: /home/ubuntu
+
+    - name: Copy the systemd service
+      ansible.builtin.copy:
+        src: files/ebs-playground.service
+        dest: "/etc/systemd/system/ebs-playground.service"
+  
+    - name: Reload the systemd service daemon
+      ansible.builtin.systemd_service:
+        daemon_reload: true
+
+    - name: Start the ebs-playground service
+      ansible.builtin.systemd_service:
+        name: ebs-playground.service
+        enabled: true
+        state: started

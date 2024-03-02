@@ -3,3 +3,4 @@
 terraform.tfstate*
 dist/
 inventory.ini
+ebs-playground

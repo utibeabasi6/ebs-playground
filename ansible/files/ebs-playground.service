@@ -1,0 +1,8 @@
+[Unit]
+Description=The EBS Playground service
+
+[Service]
+ExecStart=/home/ubuntu/ebs-playground
+
+[Install]
+WantedBy=default.target

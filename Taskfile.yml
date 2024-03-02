@@ -36,3 +36,8 @@ tasks:
     cmds:
       - echo "$(terraform output -raw instance_ip) ansible_user=ubuntu" > ../ansible/inventory.ini
     silent: true
+  ansible:
+    dir: ansible
+    cmds:
+      - ansible-playbook -i inventory.ini playbook.yml
+    silent: true
